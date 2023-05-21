@@ -9,7 +9,11 @@ public class ContinentInfo : MonoBehaviour
 
     [SerializeField] GameObject ContinentMiniInfo;
     [SerializeField] GameObject Menu;
-    [SerializeField] GameObject countriesInfo; 
+    [SerializeField] GameObject countriesInfo;
+
+    #region Games
+    [SerializeField] GameObject GameChooceCountryByFlag;
+    #endregion
     private Continent _continentN;
     public void SetContinentInfoUI(Sprite s, string continentName, Continent continent)
     {
@@ -23,5 +27,21 @@ public class ContinentInfo : MonoBehaviour
         Menu.SetActive(false);
         countriesInfo.SetActive(true);
         countriesInfo.GetComponent<CountriesInfoBlock>().SetCountries(_continentN);
+    }
+
+    public void OpenGameChooceCountryByFlag()
+    {
+        ContinentMiniInfo.SetActive(false);
+        Menu.SetActive(false);
+        GameChooceCountryByFlag.SetActive(true);
+        GameChooceCountryByFlag.GetComponent<GameChooseFlag>().InitGame(_continentN);
+    }
+
+    public void OpenContinentInfo()
+    {
+        ContinentMiniInfo.SetActive(true);
+        Menu.SetActive(true);
+        GameChooceCountryByFlag.SetActive(false);
+        countriesInfo.SetActive(false);
     }
 }

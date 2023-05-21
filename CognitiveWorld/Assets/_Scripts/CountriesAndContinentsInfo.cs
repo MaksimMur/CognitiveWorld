@@ -44,7 +44,7 @@ public class CountriesAndContinentsInfo : MonoBehaviour
 
     private static void SetSouthAmericaCountries(List<Country> countries)
     {
-        Europe_Countries = countries.Where(x => x.Continent == "Южная Америка" || x.Continent == "South America").ToList();
+        SouthAmerica_Countries = countries.Where(x => x.Continent == "Южная Америка" || x.Continent == "South America").ToList();
     }
     private static void SetNorthAmericaCountries(List<Country> countries)
     {
@@ -64,11 +64,11 @@ public class CountriesAndContinentsInfo : MonoBehaviour
         switch (continent)
         { 
             case Continent.Planet: return All_Countries;
+            case Continent.Europe: return Europe_Countries;
             case Continent.NorthAmerica: return NorthAmerica_Countries;
             case Continent.SouthAmerica: return SouthAmerica_Countries;
             case Continent.Asia: return Asia_Countries;
-            case Continent.Africa: return Africa_Countries;
-            case Continent.Europe: return Europe_Countries;
+            case Continent.Africa: return Africa_Countries;            
             case Continent.Oceania: return Oceania_Countries;
         }
         return null;

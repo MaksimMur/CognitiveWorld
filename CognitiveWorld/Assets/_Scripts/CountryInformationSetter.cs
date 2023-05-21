@@ -6,7 +6,7 @@ using UnityEngine;
 public class CountryInformationSetter : MonoBehaviour
 {
     public TextAsset countriesJson;
-    public Texture2D[] textureCountrySprites;
+    public Sprite[] textureCountrySprites;
 
     [System.Serializable]
     public class CountryInfo
@@ -20,15 +20,8 @@ public class CountryInformationSetter : MonoBehaviour
     public void Start()
     {
         countryList = JsonUtility.FromJson<CountryInfo>(countriesJson.text);
+        countrySprites = textureCountrySprites.ToList();
 
-        for (int i = 0; i < textureCountrySprites.Length; i++)
-        {
-            Sprite[] s = Resources.LoadAll<Sprite>(textureCountrySprites[i].name);
-            for (int j = 0; j < s.Length; j++)
-            {
-                countrySprites.Add(s[j]);
-            }
-        }
         for (int i = 0; i < countryList.countries.Length; i++)
         {
             countryList.countries[i].Flag = countrySprites.Where(x => x.name == countryList.countries[i].Key).First();

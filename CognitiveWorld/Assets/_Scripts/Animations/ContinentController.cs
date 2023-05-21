@@ -42,7 +42,7 @@ public class ContinentController : MonoBehaviour
     private static bool backToMenu = false;
     public void BackToMenu()
     {
-        if (!backToMenu) return;
+        if (backToMenu) return;
         CanvasController.S.GetComponent<Animator>().Play("OpenMainMenu");
         backToMenu = !backToMenu;
     }
@@ -59,6 +59,11 @@ public class ContinentController : MonoBehaviour
     {
         if (!openContinentsStart) return;
         _continetUIAnimator.SetTrigger("OpenContinents");
+        openContinentsStart = false;
+    }
+
+    public void HaveOpenedMainMenu()
+    {
         openContinentsStart = false;
     }
 

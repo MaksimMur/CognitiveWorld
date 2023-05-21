@@ -15,4 +15,9 @@ public class CanvasController : MonoBehaviour
     {
         ContinentController.ResetData();
     }
+
+    public void OpenMainMenu()
+    {
+        ContinentController.ResetData();
+    }
 }
