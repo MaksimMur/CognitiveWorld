@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour, iGame
 {
+    public bool IsGameEnd { get; set; }
     public virtual void StartGame()
     {
 
@@ -35,9 +36,20 @@ public struct Answer
 
 public interface iGame
 {
+    public bool IsGameEnd { get; set; }
     public void StartGame();
     public void EndGame();
     public void AnswerClick(AnswerButton answerButton);
     public void ExitGame();
     public void TryAgainGame();
+}
+
+public enum ChooseModeGame
+{
+    None,
+    Flags,
+    ChooseCountryByCapitalName,
+    ChooseCapitalByCountryName,
+    SequenceGeneration,
+    SequenceSquare
 }

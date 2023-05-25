@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -20,6 +22,26 @@ public class Country
     public string LinkOnWikipedia;
 
     public Sprite Flag { get; set; }
+}
+
+class CompareCounriesByGeneration : IComparer<Country>
+{
+    public int Compare(Country? p1, Country? p2)
+    {
+        if (p1 is null || p2 is null)
+            throw new ArgumentException("Некорректное значение параметра");
+        return Convert.ToInt32(string.Concat(p1.Generation.Where(x => char.IsDigit(x)).ToList())) - Convert.ToInt32(string.Concat(p2.Generation.Where(x => char.IsDigit(x)).ToList()));
+    }
+}
+
+class CompareCounriesBySquare : IComparer<Country>
+{
+    public int Compare(Country? p1, Country? p2)
+    {
+        if (p1 is null || p2 is null)
+            throw new ArgumentException("Некорректное значение параметра");
+        return Convert.ToInt32(string.Concat(p1.Square.Where(x => char.IsDigit(x)).ToList())) - Convert.ToInt32(string.Concat(p2.Square.Where(x => char.IsDigit(x)).ToList()));
+    }
 }
 
 public enum Continent

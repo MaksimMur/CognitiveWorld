@@ -34,10 +34,10 @@ RectTransform:
   m_Father: {fileID: 938181278545910533}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.056524422, y: 0.11959814}
+  m_AnchorMax: {x: 0.95500004, y: 0.88040197}
+  m_AnchoredPosition: {x: -5.5, y: -1.4064941}
+  m_SizeDelta: {x: -0.6447983, y: -2.8318024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1388716010061694638
 CanvasRenderer:
@@ -68,19 +68,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 126
+    m_Font: {fileID: 12800000, guid: be808a852c0a3c94986c3db13f5ab300, type: 3}
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 150
+    m_MinSize: 1
+    m_MaxSize: 165
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Country
+  m_Text: "\u0421\u0442\u0430\u0440\u0430\u043D\u0430"
 --- !u!114 &7330955236939717753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +107,9 @@ MonoBehaviour:
     Religion: 
     Facts: 
     LinkOnWikipedia: 
+  winColor: {r: 0, g: 0, b: 0, a: 0}
+  loseColor: {r: 0, g: 0, b: 0, a: 0}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
   game: {fileID: 0}
 --- !u!1 &6714424554893182983
 GameObject:
@@ -172,15 +175,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 0.80784315}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.80784315}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c2fdba792e924374c84e6d736069a011, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -188,7 +191,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.17
+  m_PixelsPerUnitMultiplier: 1.24
 --- !u!114 &5903776701491942008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +262,9 @@ MonoBehaviour:
     Religion: 
     Facts: 
     LinkOnWikipedia: 
+  winColor: {r: 0.33374867, g: 0.9433962, b: 0.3768712, a: 1}
+  loseColor: {r: 0.9811321, g: 0.2983873, b: 0.29156283, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
   game: {fileID: 0}
 --- !u!95 &4564424919391990648
 Animator:

@@ -28,12 +28,14 @@ public class GameChooseFlag : Game
 
     public override void StartGame()
     {
+        IsGameEnd = false;
         timer.PlayTimer(GameSecond);
         base.StartGame();
     }
 
     public override void EndGame()
     {
+        IsGameEnd = true;
         timer.StopAllCoroutines();
         StopAllCoroutines();
         endPanel.ShowPanel();
@@ -42,6 +44,8 @@ public class GameChooseFlag : Game
 
     public override void TryAgainGame()
     {
+        IsGameEnd = false;
+        _listAnswers = new List<Answer>();
         GetCountries = new List<Country>();
         endPanel.HidePanel();
         InitGame(continent);
@@ -49,7 +53,7 @@ public class GameChooseFlag : Game
 
     public override void ExitGame()
     {
-        continentInfo.OpenContinentInfo();
+        continentInfo.OpenContinentInfoFromGame(ChooseModeGame.Flags);
     }
 
     public void InitGame(Continent con)
@@ -76,6 +80,11 @@ public class GameChooseFlag : Game
     bool AnswerResultWait = false;
     public IEnumerator GetAnswer()
     {
+        if (IsGameEnd)
+        {
+            StopCoroutine(GetAnswer());
+            yield return null;
+        }
         if (!GetAnswerStart)
         {
             for (int i = 0; i < buttons.Length; i++)
@@ -90,11 +99,18 @@ public class GameChooseFlag : Game
             if (buttonClicked.country.CountryName == RightCountry)
             {
                 _listAnswers.Add(new Answer(true));
-                buttonClicked.GetComponent<Image>().color = new Color(0.0754717f, 0.546f, 0.0754717f, 0.8078431f);
+                buttonClicked.WinColor();
             }
             else
             {
-                buttonClicked.GetComponent<Image>().color = new Color(0.66f, 0.0754717f, 0.0754717f, 0.8078431f);
+                buttonClicked.LoseColor();
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    if (buttons[i].country.CountryName == RightCountry)
+                    {
+                        buttons[i].WinColor();
+                    }
+                }
                 _listAnswers.Add(new Answer(false));
             }
             AnswerResultWait = true;
@@ -138,7 +154,7 @@ public class GameChooseFlag : Game
         List<Country> answerCountries = new List<Country>();
         int index = Random.Range(0, buttons.Length);
 
-        buttons[index].GetComponent<Image>().color = new Color(0.0754717f, 0.0754717f, 0.0754717f, 0.8078431f);
+        buttons[index].DefaultColor();
         buttons[index].country = rightCountry;
         buttons[index].SetCountryName();
 
@@ -147,7 +163,7 @@ public class GameChooseFlag : Game
         for (int i = 0; i < buttons.Length; i++)
         {
             if (i == index) continue;
-            buttons[i].GetComponent<Image>().color = new Color(0.0754717f, 0.0754717f, 0.0754717f, 0.8078431f);
+            buttons[i].DefaultColor();
             int randomIndex = Random.Range(0, listCountries.Count - i - 1);
             //print($"{listCountries.Where(x => !answerCountries.Contains(x)).ToList()}__{randomIndex}");
             buttons[i].country = listCountries.Where(x => !answerCountries.Contains(x)).ToList()[randomIndex];
